@@ -13,4 +13,4 @@ DPTH stack, pronounced "depth", is a stack, containing:
 ## License
 Apache 2.0
 
-btw, the name `onlykiwis` is a joke
+btw, the name `onlykiwis` is just a joke
