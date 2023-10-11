@@ -7,9 +7,10 @@ class User(models.Model):
     username = models.CharField(
         max_length=16, primary_key=True, unique=True, verbose_name="ID"
     )
+    date = models.DateTimeField("date joined")
     profile_image = models.ImageField(blank=True)
     bio = models.CharField(max_length=200, blank=True)
-    posts = models.ManyToManyField("onlykiwis.Post", related_name="posted", blank=True)
+    posts = models.ManyToManyField("onlykiwis.Post", blank=True)
 
     def __str__(self):
         return f"User(username='@{self.username}', display_name='{self.display_name}')"
@@ -33,6 +34,7 @@ class Post(models.Model):
 class Comment(models.Model):
     author = models.ForeignKey(to=User, on_delete=models.CASCADE)
     content = models.CharField(max_length=200)
+    date = models.DateTimeField("date posted")
     likes = models.PositiveIntegerField(default=0)
 
     def __str__(self):
