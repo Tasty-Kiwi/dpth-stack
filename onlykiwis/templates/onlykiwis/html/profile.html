@@ -1,14 +1,16 @@
-{% extends "onlykiwis/html/layout.html" %}
-{% block title %}Profile{% endblock %}
+{% extends "onlykiwis/html/layout.html" %} 
+{% block title %}Profile - @{{ user.username }}{% endblock %}
 {% block body %}
-  <h1>Profile</h1>
-  <p>{{ user.display_name }}</p>
-  <p>@{{ user.username }}</p>
-  <p>{{ user.bio }}</p>
-  <h3>Posts</h3>
-  <ol>
-    {% for post in user_posts %}
-      <li><a class="text-linkingindigo" href="{% url 'post' post.id %}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ol>
+<h1>Profile</h1>
+<p>{{ user.display_name }}</p>
+<p>@{{ user.username }}</p>
+<p>{{ user.bio }}</p>
+<h3>Posts</h3>
+<ol>
+  {% for post in user.posts.all %}
+  <li>
+    <a class="text-linkingindigo" href="{% url 'post' post.id %}">{{ post.title }}</a>
+  </li>
+  {% endfor %}
+</ol>
 {% endblock %}

@@ -8,7 +8,7 @@ class User(models.Model):
         max_length=16, primary_key=True, unique=True, verbose_name="ID"
     )
     profile_image = models.ImageField(blank=True)
-    bio = models.CharField(max_length=200)
+    bio = models.CharField(max_length=200, blank=True)
     posts = models.ManyToManyField("onlykiwis.Post", related_name="posted", blank=True)
 
     def __str__(self):
@@ -17,8 +17,8 @@ class User(models.Model):
 
 class Post(models.Model):
     author = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=50)
-    subtitle = models.CharField(max_length=200)
+    title = models.CharField(max_length=50, blank=True)
+    subtitle = models.CharField(max_length=200, blank=True)
     date = models.DateTimeField("date posted")
     content = ArrayField(models.ImageField(), blank=True)
     likes = models.PositiveIntegerField(default=0)

@@ -56,6 +56,15 @@
       <text style="Subtitle">{{ user.display_name }}</text>
       <text>@{{ user.username }}</text>
       <text>{{ user.bio }}</text>
+      <view>
+        <list>
+          {% for post in user.posts.all %}
+            <item key="{{ post.id }}" style="list-item" href="{% url 'post_hxml' post.id %}">
+              <text style="list-title">{{ post.title }}</text>
+            </item>
+          {% endfor %}
+        </list>
+      </view>
     </body>
   </screen>
 </doc>
