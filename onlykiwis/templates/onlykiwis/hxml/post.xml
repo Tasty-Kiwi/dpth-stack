@@ -1,0 +1,60 @@
+<doc xmlns="https://hyperview.org/hyperview">
+  <screen>
+    <styles>
+      <style id="Body" backgroundColor="white" flex="1" padding="32" />
+      <style id="Title" textAlign="center" fontSize="32" fontWeight="bold" marginBottom="5" />
+      <style id="Subtitle" fontSize="20" lineHeight="24" fontWeight="bold" marginBottom="5" />
+
+      <style id="btn" borderRadius="6" padding="10" />
+      <style id="btn-label" textAlign="center" />
+
+      <style id="bg-glaring-white" backgroundColor="#FFFFFF" />
+      <style id="bg-void-black" backgroundColor="#000000" />
+      <style id="bg-linking-indigo" backgroundColor="#000D86" />
+      <style id="bg-dangerous-red" backgroundColor="#8F0E0E" />
+      <style id="bg-auxillary-gray" backgroundColor="#333333" />
+      <style id="bg-informational-blue" backgroundColor="#07A4D6" />
+      <style id="bg-teritary-gray" backgroundColor="#E5E5E5" />
+      <style id="bg-lavender-purple" backgroundColor="#6647FF" />
+
+      <style id="text-glaring-white" color="#FFFFFF" />
+      <style id="text-void-black" color="#000000" />
+      <style id="text-linking-indigo" color="#000D86" />
+      <style id="text-dangerous-red" color="#8F0E0E" />
+      <style id="text-auxillary-gray" color="#333333" />
+      <style id="text-informational-blue" color="#07A4D6" />
+      <style id="text-teritary-gray" color="#E5E5E5" />
+      <style id="text-lavender-purple" color="#6647FF" />
+
+      <style
+        id="list-item"
+        alignItems="center"
+        borderBottomColor="#E5E5E5"
+        borderBottomWidth="1"
+        flex="1"
+        flexDirection="row"
+        height="48"
+        justifyContent="space-between"
+        paddingLeft="24"
+        paddingRight="24"
+      />
+      <style id="mb-5" marginBottom="5" />
+      <style id="list-title" FontSize="28" />
+    </styles>
+    <body style="Body">
+      <text style="Title">Post</text>
+      <view style="btn bg-void-black mb-5">
+        <behavior
+          xmlns:share="https://instawork.com/hyperview-share"
+          action="share"
+          trigger="press"
+          share:url="{% url 'post' post.id %}"
+          share:message="Check out this post by @{{ post.author.username }}!"
+        />
+        <text style="btn-label text-glaring-white">Share!</text>
+      </view>
+      <text style="Subtitle">{{ post.title }}</text>
+      <text>{{ post.subtitle }}</text>
+    </body>
+  </screen>
+</doc>
