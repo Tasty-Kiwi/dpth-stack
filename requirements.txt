@@ -1,3 +1,7 @@
 Django
 psycopg[binary] # Postgres driver
 python-dotenv
+django-render-block
+pytailwindcss # Tailwind CLI, wrapped as a pip wheel
+django-htmx
+django-components
