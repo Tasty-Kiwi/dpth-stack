@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onlykiwis - {% block title %}Page{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=space-grotesk:300,400,500,600,700|space-mono:400,400i,700,700i" rel="stylesheet" />
+  <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+  <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
+  <!-- TODO: Move to pytailwind later -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Space Grotesk", ...tailwind.defaultTheme.fontFamily.sans],
+            mono: ["Space Mono", ...tailwind.defaultTheme.fontFamily.mono]
+          },
+          colors: {
+            glaringwhite: "#FFFFFF",
+            voidblack: "#000000",
+            linkingindigo: "#000D86",
+            dangerousred: "#8F0E0E",
+            auxillarygray: "#333333",
+            informationalblue: "#07A4D6",
+            teritarygray: "#E5E5E5",
+            lavenderpurple: "#6647FF",
+          },
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+  </style>
+</head>
+<body class="p-5">
+{% block body %}{% endblock %}
+</body>
+</html>

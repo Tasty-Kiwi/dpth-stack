@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyKiwis</title>
-</head>
-
-<body>
-  <h1>OnlyKiwis Activity</h1>
-  <ol>
-    {% for post in posts %}
-      <li><a href="{% url 'post' post.id %}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ol>
-</body>
-
-</html>
+{% extends "onlykiwis/html/layout.html" %}
+{% block title %}Index{% endblock %}
+{% block body %}
+<h1 class="text-4xl pb-5">OnlyKiwis Activity</h1>
+<div>
+  {% for post in posts %}
+    <div class="mb-2">
+      &bull; <a class="text-linkingindigo" href="{% url 'post' post.id %}">{{ post.title }}</a>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

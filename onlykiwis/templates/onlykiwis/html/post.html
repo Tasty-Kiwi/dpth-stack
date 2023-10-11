@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnlyKiwis</title>
-</head>
-
-<body>
-  <h1>Post</h1>
-  <h3>{{ post.title }}</h3>
+{% extends "onlykiwis/html/layout.html" %}
+{% block title %}Post{% endblock %}
+{% block body %}
+  <h1 class="text-4xl pb-5">Post</h1>
+  <h3 class="text-2xl">{{ post.title }}</h3>
   <h4>{{ post.subtitle }}</h4>
-</body>
-
-</html>
+  <p><a class="text-linkingindigo" href="{% url 'profile' post.author.username %}">@{{ post.author.username }}</a></p>
+{% endblock %}

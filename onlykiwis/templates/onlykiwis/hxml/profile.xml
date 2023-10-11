@@ -42,20 +42,20 @@
       <style id="list-title" FontSize="28" />
     </styles>
     <body style="Body">
-      <text style="Title">Post</text>
+      <text style="Title">Profile</text>
       <view style="btn bg-void-black mb-5">
         <behavior
           xmlns:share="https://instawork.com/hyperview-share"
           action="share"
           trigger="press"
-          share:url="{% url 'post' post.id %}"
-          share:message="Check out this post by @{{ post.author.username }}!"
+          share:url="{% url 'profile' user.username %}"
+          share:message="Check out this user on Onlykiwis! @{{ user.username }}!"
         />
         <text style="btn-label text-glaring-white">Share!</text>
       </view>
-      <text style="Subtitle">{{ post.title }}</text>
-      <text>{{ post.subtitle }}</text>
-      <text style="text-linking-indigo" href="{% url 'profile_hxml' post.author.username %}">by @{{ post.author.username }}</text>
+      <text style="Subtitle">{{ user.display_name }}</text>
+      <text>@{{ user.username }}</text>
+      <text>{{ user.bio }}</text>
     </body>
   </screen>
 </doc>
