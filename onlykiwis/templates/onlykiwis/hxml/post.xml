@@ -49,7 +49,7 @@
           action="share"
           trigger="press"
           share:url="{% url 'post' post.id %}"
-          share:message="Check out this post by @{{ post.author.username }}!"
+          share:message="Check out '{{ post.title }}' by @{{ post.author.username }} on OnlyKiwis!"
         />
         <text style="btn-label text-glaring-white">Share!</text>
       </view>

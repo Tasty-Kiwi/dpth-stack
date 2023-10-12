@@ -26,6 +26,7 @@
       <style id="text-teritary-gray" color="#E5E5E5" />
       <style id="text-lavender-purple" color="#6647FF" />
 
+      <style id="img-avatar" height="64" width="64" />
       <style
         id="list-item"
         alignItems="center"
@@ -48,17 +49,19 @@
           xmlns:share="https://instawork.com/hyperview-share"
           action="share"
           trigger="press"
-          share:url="{% url 'profile' user.username %}"
-          share:message="Check out this user on Onlykiwis! @{{ user.username }}!"
+          share:url="{% url 'profile' profile.username %}"
+          share:message="Check out this profile on Onlykiwis! @{{ profile.username }}!"
         />
         <text style="btn-label text-glaring-white">Share!</text>
       </view>
-      <text style="Subtitle">{{ user.display_name }}</text>
-      <text>@{{ user.username }}</text>
-      <text>{{ user.bio }}</text>
+      <image source="https://api.dicebear.com/7.x/lorelei-neutral/png?seed={{ profile.username }}"
+        style="img-avatar" />
+      <text style="Subtitle">{{ profile.display_name }}</text>
+      <text>@{{ profile.username }}</text>
+      <text>{{ profile.bio }}</text>
       <view>
         <list>
-          {% for post in user.posts.all %}
+          {% for post in profile.posts.all %}
             <item key="{{ post.id }}" style="list-item" href="{% url 'post_hxml' post.id %}">
               <text style="list-title">{{ post.title }}</text>
             </item>

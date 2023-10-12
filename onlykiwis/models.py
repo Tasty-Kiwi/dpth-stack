@@ -1,8 +1,12 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 
-class User(models.Model):
+class User(AbstractUser):
+    REQUIRED_FIELDS = ("display_name", "date")
+
     display_name = models.CharField(max_length=32)
     username = models.CharField(
         max_length=16, primary_key=True, unique=True, verbose_name="ID"
@@ -13,10 +17,10 @@ class User(models.Model):
 
     def __str__(self):
         return f"User(username='@{self.username}', display_name='{self.display_name}')"
-
+    
 
 class Post(models.Model):
-    author = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    author = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=50, blank=True)
     subtitle = models.CharField(max_length=200, blank=True)
     date = models.DateTimeField("date posted")
@@ -41,7 +45,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    author = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    author = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content = models.CharField(max_length=200)
     date = models.DateTimeField("date posted")
     likes = models.PositiveIntegerField(default=0)

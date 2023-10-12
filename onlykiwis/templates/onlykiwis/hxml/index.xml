@@ -42,6 +42,9 @@
     </styles>
     <body style="Body">
       <text style="Title">OnlyKiwis</text>
+      <view style="btn bg-void-black">
+        <text style="btn-label text-glaring-white" href="{% url 'login_hxml' %}">Log in</text>
+      </view>
       <!--<text style="Subtitle">The best Kiwi sharing app!</text>
       <view style="btn bg-void-black">
         <text style="btn-label text-glaring-white">This is a button!</text>
@@ -53,7 +56,7 @@
         <list>
           {% for post in posts %}
             <item key="{{ post.id }}" style="list-item" href="{% url 'post_hxml' post.id %}">
-              <text style="list-title">{{ post.id }}. {{ post.title }}</text>
+              <text style="list-title">• {{ post.title }}</text>
             </item>
           {% endfor %}
         </list>

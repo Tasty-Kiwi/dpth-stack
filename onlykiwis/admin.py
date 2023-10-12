@@ -1,11 +1,12 @@
 from django import forms
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
-from .models import *
+from .models import User, Post, Comment
 
 
 @admin.register(User)
-class UserAdmin(admin.ModelAdmin):
+class UserAdmin(UserAdmin):
     list_display = ["_username", "display_name", "bio", "date"]
     list_filter = ["date"]
     sortable_by = ["date"]

@@ -1,0 +1,59 @@
+<doc xmlns="https://hyperview.org/hyperview">
+  <screen>
+    <styles>
+      <style id="Body" backgroundColor="white" flex="1" padding="32" />
+      <style id="Title" textAlign="center" fontSize="32" fontWeight="bold" marginBottom="5" />
+      <style id="Subtitle" textAlign="center" fontSize="20" lineHeight="24" marginBottom="5" />
+
+      <style id="btn" borderRadius="6" padding="10" />
+      <style id="btn-label" textAlign="center" />
+
+      <style id="bg-glaringwhite" backgroundColor="#FFFFFF" />
+      <style id="bg-voidblack" backgroundColor="#000000" />
+      <style id="bg-linkingindigo" backgroundColor="#000D86" />
+      <style id="bg-dangerousred" backgroundColor="#8F0E0E" />
+      <style id="bg-auxillarygray" backgroundColor="#333333" />
+      <style id="bg-informationalblue" backgroundColor="#07A4D6" />
+      <style id="bg-teritarygray" backgroundColor="#E5E5E5" />
+      <style id="bg-lavenderpurple" backgroundColor="#6647FF" />
+
+      <style id="text-glaringwhite" color="#FFFFFF" />
+      <style id="text-voidblack" color="#000000" />
+      <style id="text-linkingindigo" color="#000D86" />
+      <style id="text-dangerousred" color="#8F0E0E" />
+      <style id="text-auxillarygray" color="#333333" />
+      <style id="text-informationalblue" color="#07A4D6" />
+      <style id="text-teritarygray" color="#E5E5E5" />
+      <style id="text-lavenderpurple" color="#6647FF" />
+
+      <style id="text-field" borderBottomColor="#E5E5E5" borderBottomWidth="1" marginBottom="5" />
+    </styles>
+    <body style="Body">
+      <text style="Title">Log in to OnlyKiwis</text>
+      <form id="login">
+        <text-field
+          name="username"
+          placeholder="Username"
+          style="text-field"
+        />
+        <text-field
+          name="password"
+          placeholder="Password"
+          secure-text="true"
+          style="text-field"
+        />
+        {% comment %}
+          <!-- Workaround to support CSRF tokens in HXML -->
+        {% endcomment %}
+        <text-field
+          name="csrfmiddlewaretoken"
+          value="{{ csrf_token }}"
+          hide="true"
+        />
+        <view verb="post" href="/login" target="login" style="btn bg-voidblack">
+          <text style="btn-label text-glaringwhite">Log in</text>
+        </view>
+      </form>
+    </body>
+  </screen>
+</doc>
