@@ -7,7 +7,6 @@ from django.http import Http404
 from .models import *
 
 
-# Create your views here.
 def index(request):
     posts = Post.objects.order_by("-date")
     return render(request, "onlykiwis/html/index.html", {"posts": posts})

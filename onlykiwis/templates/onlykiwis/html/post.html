@@ -5,4 +5,13 @@
   <h3 class="text-2xl">{{ post.title }}</h3>
   <h4>{{ post.subtitle }}</h4>
   <p><a class="text-linkingindigo" href="{% url 'profile' post.author.username %}">@{{ post.author.username }}</a></p>
+  <div>
+    <h1 class="text-4xl pb-5">Comments</h1>
+    {% for comment in post.comments.all %}
+      <div class="mb-2">
+        <img src="https://api.dicebear.com/7.x/lorelei-neutral/png?seed={{ comment.author.username }}" width="50">
+        <p>&bull; <a class="text-linkingindigo" href="{% url 'profile' comment.author.username %}">{{ comment.content }}</a> - @{{ comment.author.username }}</p>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}

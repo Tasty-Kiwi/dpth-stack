@@ -5,12 +5,13 @@
 <p>{{ user.display_name }}</p>
 <p>@{{ user.username }}</p>
 <p>{{ user.bio }}</p>
-<h3>Posts</h3>
-<ol>
+<div>
+  <h1 class="text-4xl pb-5">Posts</h1>
   {% for post in user.posts.all %}
-  <li>
-    <a class="text-linkingindigo" href="{% url 'post' post.id %}">{{ post.title }}</a>
-  </li>
+    <div class="mb-2">
+      <img src="https://api.dicebear.com/7.x/lorelei-neutral/png?seed={{ post.author.username }}" width="50">
+      <p>&bull; <a class="text-linkingindigo" href="{% url 'post' post.id %}">{{ post.title }}</a> - @{{ post.author.username }}</p>
+    </div>
   {% endfor %}
-</ol>
+</div>
 {% endblock %}
