@@ -26,10 +26,6 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ["date"]
     sortable_by = ["date", "likes"]
 
-    def save_model(self, request, obj, form, change):
-        super().save_model(request, obj, form, change)
-        obj.author.posts.add(obj)
-
 
 class OriginPost(forms.ModelChoiceField):
     def label_from_instance(self, member):

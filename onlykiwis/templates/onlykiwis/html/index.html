@@ -5,7 +5,8 @@
 <div>
   {% for post in posts %}
     <div class="mb-2">
-      &bull; <a class="text-linkingindigo" href="{% url 'post' post.id %}">{{ post.title }}</a>
+      <img src="https://api.dicebear.com/7.x/lorelei-neutral/png?seed={{ post.author.username }}" width="50">
+      <p>&bull; <a class="text-linkingindigo" href="{% url 'post' post.id %}">{{ post.title }}</a> - @{{ post.author.username }}</p>
     </div>
   {% endfor %}
 </div>

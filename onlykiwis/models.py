@@ -8,7 +8,6 @@ class User(models.Model):
         max_length=16, primary_key=True, unique=True, verbose_name="ID"
     )
     date = models.DateTimeField("date joined")
-    profile_image = models.ImageField(blank=True)
     bio = models.CharField(max_length=200, blank=True)
     posts = models.ManyToManyField("onlykiwis.Post", blank=True)
 
@@ -29,6 +28,16 @@ class Post(models.Model):
 
     def __str__(self):
         return f"Post(id={self.id}, author='@{self.author.username}', title='{self.title}', likes={self.likes})"
+
+    def save(
+        self,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
+    ):
+        super().save(force_insert, force_update, using, update_fields)
+        return self.author.posts.add(self)
 
 
 class Comment(models.Model):
