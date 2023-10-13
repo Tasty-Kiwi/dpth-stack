@@ -17,7 +17,7 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"User(username='@{self.username}', display_name='{self.display_name}')"
-    
+
 
 class Post(models.Model):
     author = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -42,6 +42,12 @@ class Post(models.Model):
     ):
         super().save(force_insert, force_update, using, update_fields)
         return self.author.posts.add(self)
+
+    def delete(self, using=None, keep_parents=False):
+        for comment in self.comments.all():
+            comment.delete()
+
+        return super().delete(using, keep_parents)
 
 
 class Comment(models.Model):

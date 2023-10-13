@@ -8,7 +8,7 @@
 <p>{{ profile.bio }}</p>
 <div>
   <h1 class="text-4xl pb-5">Posts</h1>
-  {% for post in profile.posts.all %}
+  {% for post in profile.posts.all reversed %}
     <div class="mb-2">
       <img src="https://api.dicebear.com/7.x/lorelei-neutral/png?seed={{ post.author.username }}" width="50">
       <p>&bull; <a class="text-linkingindigo" href="{% url 'post' post.id %}">{{ post.title }}</a> - @{{ post.author.username }}</p>

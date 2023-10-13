@@ -4,7 +4,8 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("login", views.login, name="login"),
+    path("login", views.log_in, name="login"),
+    path("post", views.post_, name="post"),
     path("post/<int:post_id>", views.post, name="post"),
     path("@<str:username>", views.profile, name="profile"),
     path("hxml", views.index_hxml, name="index_hxml"),

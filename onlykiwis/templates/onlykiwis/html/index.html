@@ -1,6 +1,28 @@
 {% extends "onlykiwis/html/layout.html" %}
 {% block title %}Index{% endblock %}
 {% block body %}
+{% if user.is_authenticated %}
+  <h1>Post</h1>
+  <div>
+    <form method="post" action="{% url 'post' %}">
+      {% csrf_token %}
+      <div>
+        <label for="inputTitle">Title</label>
+        <input name="title" id="inputTitle" placeholder="Title" required>
+      </div>
+      <div>
+        <label for="inputSubtitle">Subtitle</label>
+        <input name="subtitle" id="inputSubtitle" placeholder="Subtitle" required>
+      </div>
+      <div>
+        <button type="submit">Post</button>
+      </div>
+    </form>
+  </div>
+  {% if error is not None %}
+    <p>{{ error }}</p>
+  {% endif %}
+{% endif %}
 <h1 class="text-4xl pb-5">OnlyKiwis Activity</h1>
 <div>
   {% for post in posts %}
